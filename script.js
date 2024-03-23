@@ -1,4 +1,5 @@
 const list = document.querySelector("ul");
+const form = document.querySelector("form");
 const myLibrary = [
     {
         title: "Can't Hurt Me",
@@ -20,20 +21,6 @@ const myLibrary = [
     },
 ];
 
-for (let i = 0; i < myLibrary.length; i++) {
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-        <div class="card">
-            <p class="title">Title: ${myLibrary[i].title} </p>
-            <p class="author">Author: ${myLibrary[i].author}</p>
-            <p class="page">Page: ${myLibrary[i].pages}</p>
-            <p class="read">Book Read: ${myLibrary[i].read ? "yes" : "no"}</p>
-        </div>`
-
-    list.appendChild(li);
-}
-
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -49,4 +36,34 @@ function addBookToLibrary(title, author, pages, read) {
     return myLibrary;
 }
 
-// console.log(addBookToLibrary("some title", "some author", 234, false));
+const makeLi = (title, author, pages, read) => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        <div class="card">
+            <p class="title">Title: ${title} </p>
+            <p class="author">Author: ${author}</p>
+            <p class="page">Page: ${pages}</p>
+            <p class="read">Book Read: ${read ? "yes" : "no"}</p>
+        </div>`
+
+    list.appendChild(li);
+};
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formTitle = document.querySelector("#title").value;
+    const formAuthor = document.querySelector("#author").value;
+    const formPages = document.querySelector("#pages").value;
+    const formRead = document.querySelector("#read").checked;
+
+    makeLi(formTitle, formAuthor, formPages, formRead);
+
+    addBookToLibrary(formTitle, formAuthor, formPages, formRead);
+});
+
+
+for (let i = 0; i < myLibrary.length; i++) {
+    makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read);
+}

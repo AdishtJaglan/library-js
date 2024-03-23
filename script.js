@@ -53,10 +53,10 @@ const makeLi = (title, author, pages, read) => {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const formTitle = document.querySelector("#title").value;
-    const formAuthor = document.querySelector("#author").value;
-    const formPages = document.querySelector("#pages").value;
-    const formRead = document.querySelector("#read").checked;
+    const formTitle = title.value;
+    const formAuthor = author.value;
+    const formPages = pages.value;
+    const formRead = read.checked;
 
     makeLi(formTitle, formAuthor, formPages, formRead);
 

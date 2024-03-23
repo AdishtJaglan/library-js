@@ -59,8 +59,12 @@ form.addEventListener("submit", (e) => {
     const formRead = read.checked;
 
     makeLi(formTitle, formAuthor, formPages, formRead);
-
     addBookToLibrary(formTitle, formAuthor, formPages, formRead);
+
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    read.checked = false;
 });
 
 

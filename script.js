@@ -1,7 +1,7 @@
 const list = document.querySelector("ul");
 const form = document.querySelector("form");
 const dialog = document.querySelector("dialog");
-const showButton = document.querySelector(".show-btn");
+const showButton = document.querySelector(".btn-add");
 const closeButton = document.querySelector(".close-btn");
 const myLibrary = [
     {
@@ -43,9 +43,9 @@ const makeLi = (title, author, pages, read, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
         <div class="card">
-            <p class="title">Title: ${title} </p>
-            <p class="author">Author: ${author}</p>
-            <p class="page">Page: ${pages}</p>
+            <p class="title">${title} </p>
+            <p class="author"> ${author}</p>
+            <p class="page"> ${pages}</p>
             <button class="btn ${read ? "btn-green" : "btn-red"}" onclick="toggleReadStatus(this)">${read ? "Read" : "Not Read"}</button>
             <button class="btn btn-delete" onclick="deleteBook(${index})">Delete</button>
         </div>`

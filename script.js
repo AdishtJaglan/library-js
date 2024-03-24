@@ -2,7 +2,7 @@ const list = document.querySelector("ul");
 const form = document.querySelector("form");
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".btn-add");
-const closeButton = document.querySelector(".close-btn");
+const closeButton = document.querySelector(".btn-close");
 const myLibrary = [
     {
         title: "Can't Hurt Me",

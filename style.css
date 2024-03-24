@@ -135,3 +135,93 @@ h1 {
 
     color: var(--bg-primary);
 }
+
+dialog {
+    border-radius: 12px;
+
+    height: 40%;
+    width: 20%;
+
+    background-color: var(--bg-tertiary);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.788);
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+form {
+    height: 80%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+input {
+    width: 100%;
+    height: 15%;
+
+    border-radius: 12px;
+    border: none;
+
+    outline: none;
+    padding: 4px;
+
+    background-color: var(--bg-primary);
+}
+
+input::placeholder {
+    color: var(--bg-secondary);
+
+    font-size: 14px;
+
+    padding-left: 12px;
+}
+
+.row {
+    width: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 4px;
+}
+
+.row label {
+    width: 50%;
+    color: var(--bg-secondary);
+}
+
+.row input {
+    height: 100%;
+    width: 50%;
+}
+
+.btn-create,
+.btn-close {
+    width: 100%;
+
+    background-color: var(--bg-secondary);
+    color: var(--bg-primary);
+}
+
+.btn-create:hover,
+.btn-close:hover {
+    background-color: var(--bg-primary);
+    color: var(--bg-secondary);
+}

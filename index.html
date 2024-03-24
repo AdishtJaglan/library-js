@@ -10,10 +10,10 @@
 
 <body>
     <div class="nav">
-        <h1>Library</h1>
+        <h1>library</h1>
     </div>
 
-    <button class="btn btn-add">+Add Book</button>
+    <button class="btn btn-add">+ Add book</button>
 
     <ul>
 
@@ -21,30 +21,24 @@
 
 
     <dialog>
-        <form action="" method="dialog">
-            <label for="title">Enter book title:</label>
-            <input type="text" name="title" id="title">
-            <br>
+        <div class="container">
+            <form action="" method="dialog">
+                <input type="text" name="title" id="title" placeholder="title" required>
 
-            <label for="author">Enter author name:</label>
-            <input type="text" name="author" id="author">
+                <input type="text" name="author" id="author" placeholder="author" required>
 
-            <br>
+                <input type="number" name="pages" id="pages" placeholder="pages" required>
 
-            <label for="pages">Enter number of pages:</label>
-            <input type="number" name="pages" id="pages">
+                <div class="row">
+                    <label for="read">have you read it?</label>
+                    <input type="checkbox" id="read">
+                </div>
 
-            <br>
+                <button class="btn btn-create" type="submit">Add book</button>
+            </form>
 
-            <label for="read">Have you read the book?</label>
-            <input type="checkbox" id="read">
-
-            <br>
-
-            <button class="btn" type="submit">Add book</button>
-        </form>
-
-        <button class="btn close-btn" autofocus>close</button>
+            <button class="btn btn-close" autofocus>close</button>
+        </div>
     </dialog>
 
     <script src="./script.js"></script>

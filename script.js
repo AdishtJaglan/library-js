@@ -71,3 +71,15 @@ form.addEventListener("submit", (e) => {
 for (let i = 0; i < myLibrary.length; i++) {
     makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read);
 }
+
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".show-btn");
+const closeButton = document.querySelector(".close-btn");
+
+showButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});

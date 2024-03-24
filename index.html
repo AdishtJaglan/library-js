@@ -9,35 +9,41 @@
 </head>
 
 <body>
-    <h1>Connected!</h1>
+    <h1>Library</h1>
 
     <ul>
 
 
     </ul>
 
-    <form action="" method="post">
-        <label for="title">Enter book title:</label>
-        <input type="text" name="title" id="title">
-        <br>
+    <button class="show-btn">Add Book!</button>
 
-        <label for="author">Enter author name:</label>
-        <input type="text" name="author" id="author">
+    <dialog>
+        <form action="" method="dialog">
+            <label for="title">Enter book title:</label>
+            <input type="text" name="title" id="title">
+            <br>
 
-        <br>
+            <label for="author">Enter author name:</label>
+            <input type="text" name="author" id="author">
 
-        <label for="pages">Enter number of pages:</label>
-        <input type="number" name="pages" id="pages">
+            <br>
 
-        <br>
+            <label for="pages">Enter number of pages:</label>
+            <input type="number" name="pages" id="pages">
 
-        <label>Have you read the book?</label>
-        <input type="checkbox" id="read">
+            <br>
 
-        <br>
+            <label>Have you read the book?</label>
+            <input type="checkbox" id="read">
 
-        <button type="submit">Add book</button>
-    </form>
+            <br>
+
+            <button type="submit">Add book</button>
+        </form>
+
+        <button class="close-btn" autofocus>close</button>
+    </dialog>
 
     <script src="./script.js"></script>
 </body>

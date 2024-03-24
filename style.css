@@ -1,7 +1,14 @@
 body {
     margin: 0;
+
     color: white;
     background-color: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
 }
 
 ul {
@@ -15,6 +22,11 @@ ul {
 
 .btn {
     color: whitesmoke;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 8px;
 }
 
 .btn-red {
@@ -23,4 +35,12 @@ ul {
 
 .btn-green {
     background-color: green;
+}
+
+.card {
+    background-color: white;
+    color: black;
+
+    padding: 16px;
+    border-radius: 12px;
 }

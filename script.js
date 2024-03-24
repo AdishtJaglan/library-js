@@ -72,6 +72,8 @@ form.addEventListener("submit", (e) => {
     author.value = "";
     pages.value = "";
     read.checked = false;
+
+    dialog.close();
 });
 
 showButton.addEventListener("click", () => {

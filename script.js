@@ -1,5 +1,8 @@
 const list = document.querySelector("ul");
 const form = document.querySelector("form");
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".show-btn");
+const closeButton = document.querySelector(".close-btn");
 const myLibrary = [
     {
         title: "Can't Hurt Me",
@@ -50,6 +53,10 @@ const makeLi = (title, author, pages, read) => {
     list.appendChild(li);
 };
 
+for (let i = 0; i < myLibrary.length; i++) {
+    makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read);
+}
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -66,15 +73,6 @@ form.addEventListener("submit", (e) => {
     pages.value = "";
     read.checked = false;
 });
-
-
-for (let i = 0; i < myLibrary.length; i++) {
-    makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read);
-}
-
-const dialog = document.querySelector("dialog");
-const showButton = document.querySelector(".show-btn");
-const closeButton = document.querySelector(".close-btn");
 
 showButton.addEventListener("click", () => {
     dialog.showModal();

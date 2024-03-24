@@ -39,22 +39,22 @@ function addBookToLibrary(title, author, pages, read) {
     return myLibrary;
 }
 
-const makeLi = (title, author, pages, read) => {
+const makeLi = (title, author, pages, read, index) => {
     const li = document.createElement("li");
-
     li.innerHTML = `
         <div class="card">
             <p class="title">Title: ${title} </p>
             <p class="author">Author: ${author}</p>
             <p class="page">Page: ${pages}</p>
             <button class="btn ${read ? "btn-green" : "btn-red"}" onclick="toggleReadStatus(this)">${read ? "Read" : "Not Read"}</button>
+            <button class="btn btn-delete" onclick="deleteBook(${index})">Delete</button>
         </div>`
 
     list.appendChild(li);
 };
 
 for (let i = 0; i < myLibrary.length; i++) {
-    makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read);
+    makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read, i);
 }
 
 form.addEventListener("submit", (e) => {
@@ -91,11 +91,25 @@ const toggleReadStatus = (button) => {
         toggleButtonClasss.remove("btn-green");
         toggleButtonClasss.add("btn-red");
 
+        button.read = false;
         button.textContent = "Not Read";
     } else {
         toggleButtonClasss.remove("btn-red");
         toggleButtonClasss.add("btn-green");
 
+        button.read = true;
         button.textContent = "Read";
     }
+};
+
+const deleteBook = (index) => {
+    myLibrary.splice(index, 1);
+    render();
+};
+
+const render = () => {
+    list.innerHTML = "";
+    myLibrary.forEach((book, index) => {
+        makeLi(book.title, book.author, book.pages, book.read, index);
+    });
 };

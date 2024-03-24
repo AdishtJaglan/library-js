@@ -10,3 +10,15 @@ ul {
     align-items: center;
     gap: 24px;
 }
+
+.btn {
+    color: whitesmoke;
+}
+
+.btn-red {
+    background-color: red;
+}
+
+.btn-green {
+    background-color: green;
+}

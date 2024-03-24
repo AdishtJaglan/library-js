@@ -44,7 +44,7 @@ const makeLi = (title, author, pages, read) => {
             <p class="title">Title: ${title} </p>
             <p class="author">Author: ${author}</p>
             <p class="page">Page: ${pages}</p>
-            <p class="read">Book Read: ${read ? "yes" : "no"}</p>
+            <button class="btn ${read ? "btn-green" : "btn-red"}" >${read ? "Read" : "Not Read"}</button>
         </div>`
 
     list.appendChild(li);
@@ -82,4 +82,22 @@ showButton.addEventListener("click", () => {
 
 closeButton.addEventListener("click", () => {
     dialog.close();
+});
+
+const readButton = document.querySelectorAll(".btn");
+
+readButton.forEach((buttons) => {
+    buttons.addEventListener("click", () => {
+        if (buttons.classList.contains("btn-green")) {
+            buttons.classList.remove("btn-green");
+            buttons.classList.add("btn-red");
+
+            buttons.textContent = "Not Read";
+        } else {
+            buttons.classList.remove("btn-red");
+            buttons.classList.add("btn-green");
+
+            buttons.textContent = "Read";
+        }
+    })
 });

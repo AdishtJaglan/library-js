@@ -44,7 +44,7 @@ const makeLi = (title, author, pages, read) => {
             <p class="title">Title: ${title} </p>
             <p class="author">Author: ${author}</p>
             <p class="page">Page: ${pages}</p>
-            <button class="btn ${read ? "btn-green" : "btn-red"}" >${read ? "Read" : "Not Read"}</button>
+            <button class="btn ${read ? "btn-green" : "btn-red"}" onclick="toggleReadStatus(this)">${read ? "Read" : "Not Read"}</button>
         </div>`
 
     list.appendChild(li);
@@ -84,20 +84,18 @@ closeButton.addEventListener("click", () => {
     dialog.close();
 });
 
-const readButton = document.querySelectorAll(".btn");
+const toggleReadStatus = (button) => {
+    const toggleButtonClasss = button.classList;
 
-readButton.forEach((buttons) => {
-    buttons.addEventListener("click", () => {
-        if (buttons.classList.contains("btn-green")) {
-            buttons.classList.remove("btn-green");
-            buttons.classList.add("btn-red");
+    if (toggleButtonClasss.contains("btn-green")) {
+        toggleButtonClasss.remove("btn-green");
+        toggleButtonClasss.add("btn-red");
 
-            buttons.textContent = "Not Read";
-        } else {
-            buttons.classList.remove("btn-red");
-            buttons.classList.add("btn-green");
+        button.textContent = "Not Read";
+    } else {
+        toggleButtonClasss.remove("btn-red");
+        toggleButtonClasss.add("btn-green");
 
-            buttons.textContent = "Read";
-        }
-    })
-});
+        button.textContent = "Read";
+    }
+};

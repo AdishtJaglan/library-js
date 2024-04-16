@@ -24,37 +24,68 @@ const myLibrary = [
     },
 ];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read)
+    static addBookToLibrary(title, author, pages, read) {
+        const newBook = new Book(title, author, pages, read);
+        myLibrary.push(newBook);
 
-    myLibrary.push(newBook);
+        return myLibrary;
+    }
 
-    return myLibrary;
-}
-
-const makeLi = (title, author, pages, read, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
+    static makeLi(title, author, pages, read, index) {
+        const li = document.createElement("li");
+        li.innerHTML = `
         <div class="card">
             <p class="title">${title} </p>
             <p class="author"> ${author}</p>
             <p class="page"> ${pages}</p>
-            <button class="btn ${read ? "btn-green" : "btn-red"}" onclick="toggleReadStatus(this)">${read ? "Read" : "Not Read"}</button>
-            <button class="btn btn-delete" onclick="deleteBook(${index})">Delete</button>
+            <button class="btn ${read ? "btn-green" : "btn-red"}" onclick="Book.toggleReadStatus(this)">${read ? "Read" : "Not Read"}</button>
+            <button class="btn btn-delete" onclick="Book.deleteBook(${index})">Delete</button>
         </div>`
 
-    list.appendChild(li);
-};
+        list.appendChild(li);
+    }
+
+    static deleteBook(index) {
+        myLibrary.splice(index, 1);
+        Book.render();
+    }
+
+    static render() {
+        list.innerHTML = "";
+        myLibrary.forEach((book, index) => {
+            Book.makeLi(book.title, book.author, book.pages, book.read, index);
+        });
+    }
+
+    static toggleReadStatus(button) {
+        const toggleButtonClasss = button.classList;
+
+        if (toggleButtonClasss.contains("btn-green")) {
+            toggleButtonClasss.remove("btn-green");
+            toggleButtonClasss.add("btn-red");
+
+            button.read = false;
+            button.textContent = "Not Read";
+        } else {
+            toggleButtonClasss.remove("btn-red");
+            toggleButtonClasss.add("btn-green");
+
+            button.read = true;
+            button.textContent = "Read";
+        }
+    }
+}
 
 for (let i = 0; i < myLibrary.length; i++) {
-    makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read, i);
+    Book.makeLi(myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].read, i);
 }
 
 form.addEventListener("submit", (e) => {
@@ -65,8 +96,8 @@ form.addEventListener("submit", (e) => {
     const formPages = pages.value;
     const formRead = read.checked;
 
-    makeLi(formTitle, formAuthor, formPages, formRead);
-    addBookToLibrary(formTitle, formAuthor, formPages, formRead);
+    Book.makeLi(formTitle, formAuthor, formPages, formRead);
+    Book.addBookToLibrary(formTitle, formAuthor, formPages, formRead);
 
     title.value = "";
     author.value = "";
@@ -83,33 +114,3 @@ showButton.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
     dialog.close();
 });
-
-const toggleReadStatus = (button) => {
-    const toggleButtonClasss = button.classList;
-
-    if (toggleButtonClasss.contains("btn-green")) {
-        toggleButtonClasss.remove("btn-green");
-        toggleButtonClasss.add("btn-red");
-
-        button.read = false;
-        button.textContent = "Not Read";
-    } else {
-        toggleButtonClasss.remove("btn-red");
-        toggleButtonClasss.add("btn-green");
-
-        button.read = true;
-        button.textContent = "Read";
-    }
-};
-
-const deleteBook = (index) => {
-    myLibrary.splice(index, 1);
-    render();
-};
-
-const render = () => {
-    list.innerHTML = "";
-    myLibrary.forEach((book, index) => {
-        makeLi(book.title, book.author, book.pages, book.read, index);
-    });
-};
